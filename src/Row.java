@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Row {
 
     private String name;
@@ -29,11 +31,27 @@ public class Row {
     }
 
     public void addSubset(String newSubset){
+        boolean flag = true;
+        for (int i = 0; i < subset.length; i++) {
+            if(this.subset[i].equalsIgnoreCase(newSubset)){
+                flag = false;
+            }
+        }
+        if(flag){
+            this.subset = Arrays.copyOfRange(this.subset, 0, this.subset.length+1);
+            this.subset[this.subset.length-1] = newSubset;
 
+        }else{
+            System.out.println("already has this subset");
+        }
     }
 
     public void removeSubset(String rmSubset){
-
+        for (int i = 0; i < subset.length; i++) {
+            if(this.subset[i].equalsIgnoreCase(rmSubset)){
+                this.subset[i] = null;
+            }
+        }
     }
 
     public boolean equal(String name){
@@ -42,13 +60,24 @@ public class Row {
 
     public boolean include(String subset){
         //if subset include by this subset
-
-        return true;
+        for (int i = 0; i < this.subset.length; i++) {
+            if(this.subset[i].equalsIgnoreCase(subset)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public String toString() {
-        return "";
+        String output = name + " -> ";
+        for (int i = 0; i < this.subset.length; i++) {
+            if(!this.subset[i].equals(null)){
+                output = output + this.subset[i] + " | ";
+
+            }
+        }
+        return output;
     }
 
 

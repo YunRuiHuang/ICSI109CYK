@@ -48,6 +48,10 @@ public class Element {
 
     @Override
     public String toString() {
-        return "";
+        String output = "";
+        for(int i = 0; i < this.elements.length; i++){
+            output = output + this.elements[i] + ",";
+        }
+        return output;
     }
 }
