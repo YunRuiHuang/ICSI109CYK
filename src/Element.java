@@ -1,13 +1,13 @@
 import javax.annotation.Generated;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Element {
     //element of table
     private int x;
     private int y;
-    private String[] elements;
+    private ArrayList<String> elements;
 
-    public Element(int x, int y, String[] elements){
+    public Element(int x, int y, ArrayList<String> elements){
         this.x = x;
         this.y = y;
         this.elements = elements;
@@ -33,24 +33,24 @@ public class Element {
         this.y = y;
     }
 
-    public String[] getElements(){
+    public ArrayList<String> getElements(){
         return elements;
     }
 
-    public void setElements(String[] elements){
+    public void setElements(ArrayList<String> elements){
         this.elements = elements;
     }
 
     public boolean ifEmpty(){
         //return true if null
-        return this.elements.equals(null);
+        return this.elements.isEmpty();
     }
 
     @Override
     public String toString() {
         String output = "";
-        for(int i = 0; i < this.elements.length; i++){
-            output = output + this.elements[i] + ",";
+        for(int i = 0; i < this.elements.size(); i++){
+            output = output + this.elements.get(i) + ",";
         }
         return output;
     }

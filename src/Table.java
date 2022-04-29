@@ -1,13 +1,14 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Table {
 
-    private Element[] table;
+    private ArrayList<Element> table;
     private int size;
 
     public Table(int size){
         int length = size * (size + 1) / 2;
-        this.table = new Element[length];
+        this.table = new ArrayList<Element>();
         this.size = size;
     }
 

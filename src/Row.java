@@ -1,17 +1,18 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Row {
 
     private String name;
-    private String[] subset;
+    private ArrayList<String> subset;
 
-    public Row(String name, String[] subset){
+    public Row(String name, ArrayList<String> subset){
         this.name = name;
         this.subset = subset;
     }
 
     public Row(){
-        this(null,null);
+        this(null,new ArrayList<String>());
     }
 
     public String getName(){
@@ -22,35 +23,25 @@ public class Row {
         this.name = name;
     }
 
-    public String[] getSubset(){
+    public ArrayList<String> getSubset(){
         return this.subset;
     }
 
-    public void setSubset(String[] subset){
+    public void setSubset(ArrayList<String> subset){
         this.subset = subset;
     }
 
     public void addSubset(String newSubset){
         boolean flag = true;
-        for (int i = 0; i < subset.length; i++) {
-            if(this.subset[i].equalsIgnoreCase(newSubset)){
+        for (int i = 0; i < this.subset.size(); i++) {
+            if(this.subset.get(i).equals(newSubset)){
                 flag = false;
             }
         }
         if(flag){
-            this.subset = Arrays.copyOfRange(this.subset, 0, this.subset.length+1);
-            this.subset[this.subset.length-1] = newSubset;
-
+            this.subset.add(newSubset);
         }else{
             System.out.println("already has this subset");
-        }
-    }
-
-    public void removeSubset(String rmSubset){
-        for (int i = 0; i < subset.length; i++) {
-            if(this.subset[i].equalsIgnoreCase(rmSubset)){
-                this.subset[i] = null;
-            }
         }
     }
 
@@ -60,8 +51,8 @@ public class Row {
 
     public boolean include(String subset){
         //if subset include by this subset
-        for (int i = 0; i < this.subset.length; i++) {
-            if(this.subset[i].equalsIgnoreCase(subset)){
+        for (int i = 0; i < this.subset.size(); i++) {
+            if(this.subset.get(i).equals(subset)){
                 return true;
             }
         }
@@ -71,11 +62,8 @@ public class Row {
     @Override
     public String toString() {
         String output = name + " -> ";
-        for (int i = 0; i < this.subset.length; i++) {
-            if(!this.subset[i].equals(null)){
-                output = output + this.subset[i] + " | ";
-
-            }
+        for (int i = 0; i < this.subset.size(); i++) {
+            output = output + this.subset.get(i) + " | ";
         }
         return output;
     }
