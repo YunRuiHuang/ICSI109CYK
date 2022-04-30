@@ -1,1 +1,1 @@
-S -> XaZ1 | XaS | a,Z1 -> SXb,Xa -> a,Xb -> b
+S -> XaZ1 | XaS | a | E,Z1 -> SXb,Xa -> a,Xb -> b
