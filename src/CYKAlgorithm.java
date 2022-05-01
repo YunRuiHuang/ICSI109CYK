@@ -6,11 +6,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * @Author Yunrui Huang
+ * this class use to process the CYK algorithm
+ */
+
 public class CYKAlgorithm {
 
     private Table table;
     private ArrayList<Row> rows;
 
+    /**
+     * the constructor of the CYKAlgorithm
+     * It will first read the test.txt file to get the CFG
+     */
     public CYKAlgorithm(){
         //read file
         this.rows = new ArrayList<>();
@@ -40,6 +49,11 @@ public class CYKAlgorithm {
 
     }
 
+    /**
+     * analyze the input sting to check is it accept by the CFG
+     * @param input
+     * the String of input by user
+     */
     public void analyzeWord(String input){
         //analyze input word
             //build table
@@ -87,6 +101,15 @@ public class CYKAlgorithm {
         System.out.println(this.table.toString());
     }
 
+    /**
+     * concat two list of string
+     * @param left
+     * the left string to concat, which will be the forward part
+     * @param top
+     * the top string to concat, which will be the back part
+     * @return
+     * the string list after concat
+     */
     public ArrayList<String> combine(ArrayList<String> left, ArrayList<String> top){
         if(left == null || top == null){
             return null;
@@ -100,6 +123,13 @@ public class CYKAlgorithm {
         return combineList;
     }
 
+    /**
+     * switch the string to name of row, such as XaZ1 will switch to S
+     * @param list
+     * the array list of the string for switch
+     * @return
+     * the string list after switch
+     */
     public ArrayList<String> switching(ArrayList<String> list){
         if (list==null){
             return null;
@@ -115,7 +145,7 @@ public class CYKAlgorithm {
         return elements;
     }
 
-    public void analyzeCommand(String input){
+//    public void analyzeCommand(String input){
         //analyze input language
 
         //read file
@@ -127,8 +157,13 @@ public class CYKAlgorithm {
         //print all row
 
 
-    }
+//    }
 
+    /**
+     * the method use to read the file and split each CFG row
+     * @param fileName
+     * the name of file has CFG info
+     */
     public void readFile(String fileName){
         String str = "";
         try{
@@ -152,6 +187,13 @@ public class CYKAlgorithm {
 
     }
 
+    /**
+     * to add the new CFG row to the Array list
+     * @param name
+     * the name (or head)of CFG row, such as S, Xa, Xb
+     * @param subset
+     * the subset (or content) of CFG row, such XaS, TXb
+     */
     public void addRow(String name, String[] subset){
         ArrayList<String> input = new ArrayList<>();
         for (int i = 0; i < subset.length; i++) {
@@ -162,6 +204,9 @@ public class CYKAlgorithm {
 
 
     @Override
+    /**
+     * override the toString method to print the CFG
+     */
     public String toString() {
         String output = "";
         for (int i = 0; i < this.rows.size(); i++) {

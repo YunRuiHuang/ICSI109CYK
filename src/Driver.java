@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 
+/**
+ * @Author Yunrui Huang
+ * the main class
+ */
 public class Driver {
+    /**
+     * the main class of CYK program
+     * @param args
+     * nothing need to input
+     */
     public static void main(String[] args){
 //        Row row = new Row();
 //        row.setName("S");

@@ -1,16 +1,35 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @Author Yunrui Huang
+ * this class use to hold the table of input string
+ */
 public class Table {
 
     private ArrayList<Element> table;
     private int size;
 
+    /**
+     * the constructor of Table class
+     * @param size
+     * the size of x-axis (or y-axis) of this table
+     */
     public Table(int size){
         this.table = new ArrayList<Element>();
         this.size = size;
     }
 
+
+    /**
+     * get the element of given (x, y) address
+     * @param x
+     * the address on x-axis
+     * @param y
+     * the address on y-axis
+     * @return
+     * the string list on this address
+     */
     public ArrayList<String> getElement(int x, int y){
         for (int i = 0; i < this.table.size(); i++) {
             if(this.table.get(i).getX() == x && this.table.get(i).getY() == y){
@@ -20,6 +39,15 @@ public class Table {
         return null;
     }
 
+    /**
+     * get the element of given (x, y) address
+     * @param x
+     * the address on x-axis
+     * @param y
+     * the address on y-axis
+     * @return
+     * the element on this address
+     */
     public Element getElements(int x, int y){
         for (int i = 0; i < this.table.size(); i++) {
             if(this.table.get(i).getX() == x && this.table.get(i).getY() == y){
@@ -29,6 +57,11 @@ public class Table {
         return null;
     }
 
+    /**
+     * set a new element
+     * @param elements
+     * the element to set
+     */
     public void setElement(Element elements){
         if(this.getElement(elements.getX(),elements.getY())==null){
 //            Element newElements = new Element();
@@ -40,6 +73,20 @@ public class Table {
         //new element
     }
 
+
+    /**
+     * combine two element to get a new arraylist of string
+     * @param ax
+     * the x-axis address of left element
+     * @param ay
+     * the y-axis address of left element
+     * @param bx
+     * the x-axis address of top element
+     * @param by
+     * the y-axis address of top element
+     * @return
+     * the string arraylist after combine
+     */
     public ArrayList<String> combine(int ax, int ay, int bx, int by){
         ArrayList<String> elementsA = this.getElement(ax,ay);
         ArrayList<String> elementsB = this.getElement(bx,by);
@@ -65,6 +112,9 @@ public class Table {
 
 
     @Override
+    /**
+     * override the toString to print the table
+     */
     public String toString() {
         String output = "";
         for (int i = size - 1; i > -1 ; i--) {
